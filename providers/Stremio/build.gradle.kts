@@ -63,7 +63,7 @@ flxProvider {
 
     language.set(Language.Multiple)
 
-    providerType.set(ProviderType.All)
+    providerType.set(ProviderType("Stremio Addons"))
 
     status.set(Status.Working)
 

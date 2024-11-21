@@ -1,4 +1,3 @@
-## Flixclusive's Built-In Providers
 #### List of available providers:
 | Name          | Status    |
 | :-----------  | :-------  |

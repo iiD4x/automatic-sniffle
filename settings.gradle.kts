@@ -1,4 +1,4 @@
-rootProject.name = "flx-providers"
+rootProject.name = "automatic-sniffler"
 
 include(
     "SuperStream",
