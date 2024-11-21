@@ -2,31 +2,34 @@
     {
         "iconUrl": "https://i.imgur.com/LNtqPTi.png",
         "repositoryUrl": "https://github.com/Flixclusive/flx-providers",
+        "adult": false,
         "providerType": {
             "type": "Movies, TV Shows, etc."
         },
-        "status": "Maintenance",
+        "status": "Down",
         "language": {
             "languageCode": "Multiple"
         },
         "authors": [
             {
-                "githubLink": "https://github.com/rhenwinch",
-                "name": "rhenwinch"
+                "name": "rhenwinch",
+                "socialLink": "https://github.com/rhenwinch"
             }
         ],
-        "versionCode": 10005,
+        "id": "5fc2c202fcba0c4",
+        "versionCode": 10302,
         "description": "NOTICE: This provider uses WebView to scrape content. This might lag.\n\nStream seamlessly in adjustable HD resolution (1080p) with blazing-fast loading speeds. Offers HLS media.",
         "buildUrl": "https://raw.githubusercontent.com/Flixclusive/flx-providers/builds/FlixHQ.flx",
-        "changelog": "### FlixHQ is still broken. I'm too lazy to fix this provider now - their devs just wont give up :')",
-        "versionName": "1.0.0",
+        "changelog": "# v1.0.3 - patch2\n- update compose BOM to 2024.09.02",
+        "versionName": "1.0.3",
         "name": "FlixHQ"
     },
     {
         "iconUrl": "https://i.imgur.com/Hoq93zL.png",
         "repositoryUrl": "https://github.com/Flixclusive/flx-providers",
+        "adult": false,
         "providerType": {
-            "type": "Movies, TV Shows, etc."
+            "type": "Stremio Addons"
         },
         "status": "Working",
         "language": {
@@ -34,20 +37,22 @@
         },
         "authors": [
             {
-                "githubLink": "https://github.com/rhenwinch",
-                "name": "rhenwinch"
+                "name": "rhenwinch",
+                "socialLink": "https://github.com/rhenwinch"
             }
         ],
-        "versionCode": 10008,
-        "description": "A flixclusive adapter for Stremio addons. Torrent addons, such as Torrentio,  don't work without RD or Debrid accounts.",
+        "id": "283b784f2acef99",
+        "versionCode": 12600,
+        "description": "A flixclusive adapter for Stremio addons. Torrent addons, such as Torrentio, don't work without debrid accounts.",
         "buildUrl": "https://raw.githubusercontent.com/Flixclusive/flx-providers/builds/Stremio.flx",
-        "changelog": "# Catalogs are here!\n\n### \u2728 New:\n- Add support for streaming, catalog, and metadata addons.\n\n### \ud83d\udcdd Changes:\n- Fix duplicating addons\n- Enhance UI/UX of addons cards",
-        "versionName": "1.0.0",
+        "changelog": "### Fixes:\n- Remove built-in opensubs-v3 addon\n- Allow subtitles addons\n- Fix default metadata loading (Cinemata)",
+        "versionName": "1.2.6",
         "name": "Stremio"
     },
     {
         "iconUrl": "https://i.imgur.com/dBgb2CR.png",
         "repositoryUrl": "https://github.com/Flixclusive/flx-providers",
+        "adult": false,
         "providerType": {
             "type": "Movies, TV Shows, etc."
         },
@@ -57,24 +62,26 @@
         },
         "authors": [
             {
-                "githubLink": "https://github.com/rhenwinch",
-                "name": "rhenwinch"
+                "name": "rhenwinch",
+                "socialLink": "https://github.com/rhenwinch"
             },
             {
-                "githubLink": "https://github.com/sussy-code",
-                "name": "sussy-code"
+                "name": "sussy-code",
+                "socialLink": "https://github.com/sussy-code"
             }
         ],
-        "versionCode": 11200,
-        "description": "A forked clone of the old movie-web.",
+        "id": "bb76f39da07290b",
+        "versionCode": 14102,
+        "description": "A forked clone of the old movie-web.\n\nThis is a set of providers. All source code references belong to sudo-flix.",
         "buildUrl": "https://raw.githubusercontent.com/Flixclusive/flx-providers/builds/Sudo-Flix.flx",
-        "changelog": "# v1.1.2\n\n### \ud83d\udd27 Changes:\n- [x] Improve RidoMovies",
-        "versionName": "1.1.2",
+        "changelog": "# 1.4.1\n\n- update compose BOM to 2024.09.02",
+        "versionName": "1.4.1",
         "name": "Sudo-Flix"
     },
     {
         "iconUrl": "https://i.imgur.com/KgMakl9.png",
         "repositoryUrl": "https://github.com/Flixclusive/flx-providers",
+        "adult": false,
         "providerType": {
             "type": "Movies, TV Shows, etc."
         },
@@ -84,15 +91,16 @@
         },
         "authors": [
             {
-                "githubLink": "https://github.com/rhenwinch",
-                "name": "rhenwinch"
+                "name": "rhenwinch",
+                "socialLink": "https://github.com/rhenwinch"
             }
         ],
-        "versionCode": 12102,
-        "description": "NOTICE: This provider doesn't work sometimes, idk why.\n\nA classic streaming service with a large library of movies and TV shows, some even in 4K. Majority of the content included on this provider offers non-HLS streaming.",
+        "id": "8f25023a4ba5dfb",
+        "versionCode": 16100,
+        "description": "REMINDER: This provider needs configuration to work!! Go to its provider settings and configure it there.\n\nA classic streaming service with a large library of movies and TV shows, some even in 4K. Majority of the content included on this provider offers non-HLS streaming.",
         "buildUrl": "https://raw.githubusercontent.com/Flixclusive/flx-providers/builds/SuperStream.flx",
-        "changelog": "# v1.2.1\n\n### \ud83d\udd27 Changes:\n- [x] Fix failed to find shared key issue\n---\n\n# v1.2.0-b2\n\n### \ud83d\udd27 Changes:\n- [x] Update code to keep up with new app structure for its new catalog system\n- [x] Custom catalogs will be added soon.",
-        "versionName": "1.2.1",
+        "changelog": "# v1.6.1\n\n- revert + update `getLinks` logic.\n- no more WebView Cloudflare interaction.\n- fix TV shows support\n\n**this might be my last update :')**",
+        "versionName": "1.6.1",
         "name": "SuperStream"
     }
 ]
