@@ -50,13 +50,14 @@ subprojects {
          * own github profile link
          * */
         author(
-            name = "rhenwinch",
-            socialLink = "https://github.com/rhenwinch",
+            name = "abrogani",
+            socialLink = "https://github.com/abrogani",
+            image = "https://github.com/abrogani.png"
         )
         // author( ... )
         // author( ... )
 
-        setRepository("https://github.com/Flixclusive/flx-providers")
+        setRepository("https://github.com/abrogani/automatic-sniffle")
     }
 
     android {
@@ -68,7 +69,7 @@ subprojects {
 
     dependencies {
         val implementation by configurations
-        val fatImplementation by configurations // <- use when you have non-supported libraries.
+        // val fatImplementation by configurations // <- use when you have non-supported libraries.
         val testImplementation by configurations
         val coreLibraryDesugaring by configurations
 
