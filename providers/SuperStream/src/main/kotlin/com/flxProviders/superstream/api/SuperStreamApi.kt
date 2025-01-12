@@ -1,6 +1,5 @@
 package com.flxProviders.superstream.api
 
-import android.content.Context
 import android.content.res.Resources
 import com.flixclusive.core.util.coroutines.AppDispatchers.Companion.withDefaultContext
 import com.flixclusive.core.util.coroutines.AppDispatchers.Companion.withIOContext
@@ -51,7 +50,6 @@ class SuperStreamApi(
     client: OkHttpClient,
     provider: Provider,
     resources: Resources,
-    val context: Context,
     private val settings: ProviderSettings
 ) : ProviderApi(client, provider) {
     private val token: String?
@@ -218,16 +216,9 @@ class SuperStreamApi(
         return if (season == null) {
             sharedResources.files
         } else {
-            val cleanedFiles = cleanFiles(
-                files = sharedResources.files!!,
-                shareKey = shareKey
-            )
-
             withDefaultContext {
                 fetchSeasonFiles(
-                    sharedResources = sharedResources.copy(
-                        files = cleanedFiles
-                    ),
+                    sharedResources = sharedResources,
                     season = season,
                     episode = episode!!,
                     shareKey = shareKey
@@ -269,8 +260,19 @@ class SuperStreamApi(
         var parentId = sharedResources.files
             ?.find { it.fileName.equals("season $season", true) }?.fid
 
-        if (parentId == null && sharedResources.files?.isNotEmpty() == true) {
-            val subDirectoryId = sharedResources.files.first().fid
+        val filesAreNotEmpty = sharedResources.files?.isNotEmpty() == true
+        if (parentId == null && filesAreNotEmpty) {
+            val cleanedFiles = cleanFiles(
+                files = sharedResources.files!!,
+                shareKey = shareKey
+            )
+
+            parentId = cleanedFiles
+                .find { it.fileName.equals("season $season", true) }?.fid
+        }
+
+        if (parentId == null && filesAreNotEmpty) {
+            val subDirectoryId = sharedResources.files!!.first().fid
             parentId = withIOContext {
                 fetchSubDirectorySeasonId(subDirectoryId, season, shareKey)
             }
@@ -413,7 +415,7 @@ class SuperStreamApi(
         file: ExternalResponse.Data.StreamFile,
         onLinkFound: (MediaLink) -> Unit
     ) {
-        listOf(sources, qualities).forEach topForEach@ { item ->
+        listOf(sources, qualities).forEach topForEach@{ item ->
             if (item == null) return@topForEach
 
             fromJson<List<ExternalSources>>(item).forEach { source ->

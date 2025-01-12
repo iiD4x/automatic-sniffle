@@ -24,8 +24,7 @@ class SuperStream : Provider() {
             client = client,
             provider = this,
             resources = resources!!,
-            settings = settings,
-            context = context
+            settings = settings
         )
     }
 }
