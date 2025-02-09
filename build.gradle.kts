@@ -13,11 +13,11 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:8.2.0")
+        classpath("com.android.tools.build:gradle:8.7.3")
         // Flixclusive gradle plugin which makes everything work and builds providers
-        classpath("com.github.flixclusiveorg.core-gradle:core-gradle:1.2.2")
+        classpath("com.github.flixclusiveorg.core-gradle:core-gradle:1.2.5")
         // Kotlin support. Remove if you want to use Java
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.10")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.21")
     }
 }
 
@@ -37,6 +37,9 @@ fun Project.android(configuration: BaseExtension.() -> Unit)
         = extensions.getByName<BaseExtension>("android").configuration()
 
 subprojects {
+    val projectName = name.lowercase()
+        .replace("-", "_")
+
     apply(plugin = "flx-provider")
     apply(plugin = "kotlin-android") // Remove if using Java
 
@@ -58,13 +61,12 @@ subprojects {
         // author( ... )
 
         setRepository("https://github.com/abrogani/automatic-sniffle")
+
+        id = "abrogani-$projectName"
     }
 
     android {
-        val projectName = name.lowercase()
-            .replace("-", "_")
-
-        namespace = "com.flxProviders.$projectName"
+        namespace = "com.abrogani.$projectName"
     }
 
     dependencies {
@@ -73,19 +75,20 @@ subprojects {
         val testImplementation by configurations
         val coreLibraryDesugaring by configurations
 
-        coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.2")
+        coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
+        implementation("androidx.compose.runtime:runtime")
 
         val coreStubsModule = "com.github.flixclusiveorg.core-stubs:provider"
-        val coreStubsVersion = "1.2.0"
+        val coreStubsVersion = "1.2.5"
 
         // Stubs for all Flixclusive classes
         implementation("$coreStubsModule:$coreStubsVersion")
 
         // ============= START: FOR TESTING ===============
         testImplementation("$coreStubsModule:$coreStubsVersion")
-        testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+        testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.1")
         testImplementation("junit:junit:4.13.2")
-        testImplementation("io.mockk:mockk:1.13.8")
+        testImplementation("io.mockk:mockk:1.13.16")
         // ============== END: FOR TESTING ================
     }
 }

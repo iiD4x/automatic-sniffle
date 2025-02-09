@@ -1,10 +1,11 @@
+
 import com.flixclusive.model.provider.Language
 import com.flixclusive.model.provider.ProviderType
 import com.flixclusive.model.provider.Status
 import org.jetbrains.kotlin.konan.properties.Properties
 
 dependencies {
-    implementation("androidx.core:core:1.13.1")
+    implementation("androidx.core:core:1.15.0")
 
     // Comment if not implementing own SettingsScreen
     // No need to specify the compose version explicitly
@@ -16,7 +17,6 @@ dependencies {
 
     fatImplementation("org.bouncycastle:bcpkix-jdk15on:1.68")
     testImplementation("org.bouncycastle:bcpkix-jdk15on:1.68")
-
 }
 
 android {
@@ -40,13 +40,15 @@ android {
 }
 
 flxProvider {
-    description.set("""
+    description =
+        """
         REMINDER: This provider needs configuration to work!! Go to its provider settings and configure it there.
         
         A classic streaming service with a large library of movies and TV shows, some even in 4K. Majority of the content included on this provider offers non-HLS streaming.
-    """.trimIndent())
+        """.trimIndent()
 
-    changelog.set("""
+    changelog =
+        """
         # v1.6.1
         
         - revert + update `getLinks` logic.
@@ -54,21 +56,20 @@ flxProvider {
         - fix TV shows support
         
         **this might be my last update :')**
-    """.trimIndent())
+        """.trimIndent()
 
     versionMajor = 1
     versionMinor = 6
     versionPatch = 1
     versionBuild = 1
 
-    iconUrl.set("https://i.imgur.com/KgMakl9.png") // OPTIONAL
+    iconUrl = "https://i.imgur.com/KgMakl9.png" // OPTIONAL
 
-    language.set(Language.Multiple)
+    language = Language.Multiple
 
-    providerType.set(ProviderType.All)
+    providerType = ProviderType.All
 
-    status.set(Status.Working)
+    status = Status.Working
 
-    requiresResources.set(true)
+    requiresResources = true
 }
-

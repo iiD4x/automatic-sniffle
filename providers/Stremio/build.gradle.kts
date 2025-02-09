@@ -3,7 +3,7 @@ import com.flixclusive.model.provider.ProviderType
 import com.flixclusive.model.provider.Status
 
 dependencies {
-    implementation("androidx.core:core:1.13.1")
+    implementation("androidx.core:core:1.15.0")
     /**
      * Custom dependencies for each provider should be implemented here.
      * */
@@ -18,7 +18,6 @@ dependencies {
 
     implementation("io.coil-kt:coil-compose:2.5.0")
     // ================= END: COMPOSE UI =================
-
 }
 
 android {
@@ -36,16 +35,18 @@ android {
 }
 
 flxProvider {
-    description.set("""
+    description =
+        """
         A flixclusive adapter for Stremio addons. Torrent addons, such as Torrentio, don't work without debrid accounts.
-    """.trimIndent())
+        """.trimIndent()
 
-    changelog.set("""
+    changelog =
+        """
         ### Fixes:
         - Remove built-in opensubs-v3 addon
         - Allow subtitles addons
         - Fix default metadata loading (Cinemata)
-    """.trimIndent())
+        """.trimIndent()
 
     versionMajor = 1
     versionMinor = 2
@@ -59,14 +60,13 @@ flxProvider {
     // )
     // ===
 
-    iconUrl.set("https://i.imgur.com/Hoq93zL.png") // OPTIONAL
+    iconUrl = "https://i.imgur.com/Hoq93zL.png" // OPTIONAL
 
-    language.set(Language.Multiple)
+    language = Language.Multiple
 
-    providerType.set(ProviderType("Stremio Addons"))
+    providerType = ProviderType("Stremio Addons")
 
-    status.set(Status.Working)
+    status = Status.Working
 
-    requiresResources.set(true)
+    requiresResources = true
 }
-

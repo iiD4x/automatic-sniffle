@@ -3,36 +3,30 @@ import com.flixclusive.model.provider.ProviderType
 import com.flixclusive.model.provider.Status
 
 flxProvider {
-    description.set("""
+    description =
+        """
         A forked clone of the old movie-web.
         
         This is a set of providers. All source code references belong to sudo-flix.
-    """.trimIndent())
+        """.trimIndent()
 
-    changelog.set("""
+    changelog =
+        """
         # 1.4.1
         
         - update compose BOM to 2024.09.02
-    """.trimIndent())
+        """.trimIndent()
 
     versionMajor = 1
     versionMinor = 4
     versionPatch = 1
     versionBuild = 2
 
-    // Extra authors for specific provider
-     author(
-        name = "sussy-code",
-        socialLink = "https://github.com/sussy-code",
-     )
-    // ===
+    iconUrl = "https://i.imgur.com/dBgb2CR.png" // OPTIONAL
 
-    iconUrl.set("https://i.imgur.com/dBgb2CR.png") // OPTIONAL
+    language = Language.Multiple
 
-    language.set(Language.Multiple)
+    providerType = ProviderType.All
 
-    providerType.set(ProviderType.All)
-
-    status.set(Status.Working)
+    status = Status.Working
 }
-

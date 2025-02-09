@@ -3,7 +3,7 @@ import com.flixclusive.model.provider.ProviderType
 import com.flixclusive.model.provider.Status
 
 dependencies {
-    implementation("androidx.core:core:1.13.1")
+    implementation("androidx.core:core:1.15.0")
 
     // Comment if not implementing own SettingsScreen
     // No need to specify the compose version explicitly
@@ -12,7 +12,6 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.runtime:runtime")
     // ================= END: COMPOSE UI =================
-
 }
 
 android {
@@ -26,28 +25,29 @@ android {
 }
 
 flxProvider {
-    description.set("""
+    description =
+        """
         NOTICE: This provider uses WebView to scrape content. This might lag.
         
         Stream seamlessly in adjustable HD resolution (1080p) with blazing-fast loading speeds. Offers HLS media.
-    """.trimIndent())
+        """.trimIndent()
 
-    changelog.set("""
+    changelog =
+        """
         # v1.0.3 - patch2
         - update compose BOM to 2024.09.02
-    """.trimIndent())
+        """.trimIndent()
 
     versionMajor = 1
     versionMinor = 0
     versionPatch = 3
     versionBuild = 2
 
-    iconUrl.set("https://i.imgur.com/LNtqPTi.png")
+    iconUrl = "https://i.imgur.com/LNtqPTi.png"
 
-    language.set(Language.Multiple)
+    language = Language.Multiple
 
-    providerType.set(ProviderType.All)
+    providerType = ProviderType.All
 
-    status.set(Status.Down)
+    status = Status.Down
 }
-
