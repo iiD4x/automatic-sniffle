@@ -96,7 +96,7 @@ flxProvider {
     status = Status.Beta
 }
 
-tasks.create("getCSJar") {
+tasks.register("getCSJar") {
     doFirst {
         logger.lifecycle("Fetching Cloudstream JAR")
 
