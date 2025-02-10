@@ -20,10 +20,11 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
-import coil.compose.AsyncImagePainter
-import coil.imageLoader
-import coil.request.ImageRequest
+import coil3.compose.AsyncImage
+import coil3.compose.AsyncImagePainter
+import coil3.ImageLoader
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 
 @Composable
 internal fun ImageWithSmallPlaceholder(
@@ -35,6 +36,7 @@ internal fun ImageWithSmallPlaceholder(
     shape: Shape = CircleShape
 ) {
     var isSuccess by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
     val background by animateColorAsState(
         targetValue = if (isSuccess) Color.Transparent else MaterialTheme.colorScheme.surface,
@@ -61,11 +63,11 @@ internal fun ImageWithSmallPlaceholder(
 
             if (urlImage != null) {
                 AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
+                    model = ImageRequest.Builder(context)
                         .data(urlImage)
                         .crossfade(true)
                         .build(),
-                    imageLoader = LocalContext.current.imageLoader,
+                    imageLoader = ImageLoader(context),
                     contentDescription = contentDesc,
                     onState = { isSuccess = it is AsyncImagePainter.State.Success },
                     modifier = Modifier
