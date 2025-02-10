@@ -1,18 +1,10 @@
 package com.abrogani.stremio.settings
 
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,7 +19,7 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 
 @Composable
-internal fun ImageWithSmallPlaceholder(
+internal  fun ImageWithSmallPlaceholder(
     modifier: Modifier = Modifier,
     placeholderModifier: Modifier = Modifier,
     urlImage: String?,
@@ -37,6 +29,13 @@ internal fun ImageWithSmallPlaceholder(
 ) {
     var isSuccess by remember { mutableStateOf(false) }
     val context = LocalContext.current
+
+    // Create a singleton ImageLoader instance for the addon logos
+    val imageLoader = remember(context) {
+        ImageLoader.Builder(context)
+            .crossfade(true)
+            .build()
+    }
 
     val background by animateColorAsState(
         targetValue = if (isSuccess) Color.Transparent else MaterialTheme.colorScheme.surface,
@@ -67,11 +66,10 @@ internal fun ImageWithSmallPlaceholder(
                         .data(urlImage)
                         .crossfade(true)
                         .build(),
-                    imageLoader = ImageLoader(context),
+                    imageLoader = imageLoader,
                     contentDescription = contentDesc,
                     onState = { isSuccess = it is AsyncImagePainter.State.Success },
-                    modifier = Modifier
-                        .fillMaxSize()
+                    modifier = Modifier.fillMaxSize()
                 )
             }
         }
