@@ -53,14 +53,14 @@ subprojects {
          * own github profile link
          * */
         author(
-            name = "defour",
-            socialLink = "https://github.com/iiD4x",
-            image = "https://github.com/iiD4x.png"
+            name = "abrogani",
+            socialLink = "https://github.com/abrogani",
+            image = "https://github.com/abrogani.png"
         )
         // author( ... )
         // author( ... )
 
-        setRepository("https://github.com/iiD4x/automatic-sniffle")
+        setRepository("https://github.com/abrogani/automatic-sniffle")
 
         id = "abrogani-$projectName"
     }
