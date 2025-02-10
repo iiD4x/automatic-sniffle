@@ -14,12 +14,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import coil3.compose.AsyncImagePainter
-import coil3.ImageLoader
+import coil3.imageLoader
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 
 @Composable
-internal  fun ImageWithSmallPlaceholder(
+internal fun ImageWithSmallPlaceholder(
     modifier: Modifier = Modifier,
     placeholderModifier: Modifier = Modifier,
     urlImage: String?,
@@ -28,14 +28,6 @@ internal  fun ImageWithSmallPlaceholder(
     shape: Shape = CircleShape
 ) {
     var isSuccess by remember { mutableStateOf(false) }
-    val context = LocalContext.current
-
-    // Create a singleton ImageLoader instance for the addon logos
-    val imageLoader = remember(context) {
-        ImageLoader.Builder(context)
-            .crossfade(true)
-            .build()
-    }
 
     val background by animateColorAsState(
         targetValue = if (isSuccess) Color.Transparent else MaterialTheme.colorScheme.surface,
@@ -62,14 +54,15 @@ internal  fun ImageWithSmallPlaceholder(
 
             if (urlImage != null) {
                 AsyncImage(
-                    model = ImageRequest.Builder(context)
+                    model = ImageRequest.Builder(LocalContext.current)
                         .data(urlImage)
                         .crossfade(true)
                         .build(),
-                    imageLoader = imageLoader,
+                    imageLoader = LocalContext.current.imageLoader,
                     contentDescription = contentDesc,
                     onState = { isSuccess = it is AsyncImagePainter.State.Success },
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier
+                        .fillMaxSize()
                 )
             }
         }
