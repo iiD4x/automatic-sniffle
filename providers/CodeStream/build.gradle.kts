@@ -84,7 +84,7 @@ flxProvider {
 
     versionMajor = 0
     versionMinor = 0
-    versionPatch = 1
+    versionPatch = 2
     versionBuild = 0
 
     iconUrl = "https://i.imgur.com/g4FxRfl.png"
@@ -107,16 +107,18 @@ tasks.register("getCSJar") {
             csJarFolder.mkdirs()
         }
 
-        if (!csJar.exists()) {
-            apkDownloadUrl.download(
-                file = csJar,
-                progressLogger =
-                    createProgressLogger(
-                        project = project,
-                        loggerCategory = "cloudstream",
-                    ),
-            )
+        if (csJar.exists()) {
+            csJar.delete()
         }
+
+        apkDownloadUrl.download(
+            file = csJar,
+            progressLogger =
+            createProgressLogger(
+                project = project,
+                loggerCategory = "cloudstream",
+            ),
+        )
     }
 }
 
